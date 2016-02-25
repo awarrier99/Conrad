@@ -1,3 +1,6 @@
-
-cd "C:\Conrad\bin\com\warriermig\conrad"
-java ConradPrototype
+@echo off
+cd "C:\Conrad\bin"
+echo Output:
+java com.warriermig.conrad.ConradPrototype
+echo.
+pause
