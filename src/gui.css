@@ -17,6 +17,7 @@
 
 #button{
 	-fx-background-radius: 50%;
+	-fx-background-color: #FFFFFF;
 	-fx-graphic: url("../img/mic_36px.png");
 	-fx-alignment: CENTER;
 }

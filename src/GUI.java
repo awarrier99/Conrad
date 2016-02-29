@@ -1,20 +1,14 @@
 import javafx.application.Application;
-import javafx.geometry.Rectangle2D;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.Label;
-import javafx.scene.Group;
-import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.Scene;
 import javafx.scene.shape.*;
-import javafx.scene.text.*;
-import javafx.stage.FileChooser;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.Window;
+import javafx.scene.effect.DropShadow;
+import javafx.animation.*;
+import javafx.util.Duration;
 
 public class GUI extends Application {
 	private Pane root;
@@ -23,6 +17,7 @@ public class GUI extends Application {
 	private Rectangle r;
 	private double windowHeight;
 	private double windowWidth;
+	private DropShadow dropShadow;
 
 	public void setupRegion(){
 		root.getChildren().addAll(title, startButton);
@@ -34,7 +29,15 @@ public class GUI extends Application {
 		startButton.setPrefHeight(startButton.prefWidth(-1));
 		startButton.setLayoutX((windowWidth-startButton.prefWidth(-1))/2);
 		startButton.setLayoutY((windowHeight-startButton.prefHeight(-1))/2+50);
+	}
 
+	public void styleButton(){
+		dropShadow = new DropShadow();
+		dropShadow.setRadius(15.0);
+		dropShadow.setOffsetX(0.0);
+		dropShadow.setOffsetY(3.0);
+		dropShadow.setColor(Color.rgb(0, 0, 0, 0.6));
+		startButton.setEffect(dropShadow);
 	}
 	@Override
 	public void init(){
@@ -46,9 +49,15 @@ public class GUI extends Application {
 		//Image micImage = new Image(getClass().getResourceAsStream("not.png"));
 		startButton = new Button();
 		startButton.setId("button");
-
+		styleButton();
+		startButton.setOnAction(e -> {
+			TranslateTransition tt = new TranslateTransition(Duration.millis(500));
+			tt.setFromY(3.0);
+			tt.setToY(0.0f);
+			ParallelTransition pt = new ParallelTransition(dropShadow, tt);
+			tt.play();
+		});
 		
-
 		title = new Label("Hello!");
 		title.getStyleClass().add("text");
 		title.setId("title");
