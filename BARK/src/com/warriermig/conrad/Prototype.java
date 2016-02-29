@@ -1,9 +1,7 @@
 package com.warriermig.conrad;
 
-
-
-public class ConradPrototype {
+public class Prototype {
 	public static void main(String[] args) {
-		System.out.println("Miguel is ugly af");
+		
 	}
 }
