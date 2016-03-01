@@ -22,7 +22,7 @@ public class Prototype {
         String buf = new String("");
         Scanner fin = new Scanner(new File("res\\engdict.txt")).useDelimiter(",\\s*");
         ArrayList<String> words = new ArrayList<String>();
-        String[4] keywords;
+        String[] keywords = {"", "", "", ""};
         
         while (fin.hasNext()) {
         	buf = fin.next();
@@ -30,8 +30,8 @@ public class Prototype {
         }
         fin.close();
         
-        for (String s: words) {
-        	System.out.println(s);
+        for (int x = 0; x < 3; x++) {
+        	System.out.println();
         }
         
         
