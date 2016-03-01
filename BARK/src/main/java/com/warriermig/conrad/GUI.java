@@ -6,18 +6,15 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.Scene;
-import javafx.scene.shape.*;
 import javafx.stage.Stage;
 import javafx.scene.effect.DropShadow;
 import javafx.animation.*;
 import javafx.util.Duration;
-import javafx.scene.input.MouseEvent;
 
 public class GUI extends Application {
 	private Pane root;
 	private Label title;
 	private Button startButton;
-	private Rectangle r;
 	private double windowHeight;
 	private double windowWidth;
 	private DropShadow dropShadow;
@@ -97,7 +94,7 @@ public class GUI extends Application {
 	@Override
 	public void start(Stage primary){
 		Scene s = new Scene(root, windowWidth, windowHeight);
-		s.getStylesheets().add("gui.css"); 
+		s.getStylesheets().add(getClass().getResource("gui.css").toString()); 
 		s.setFill(Color.web("#1A237E"));
 		primary.setScene(s);
 		primary.setTitle("BARK!");
