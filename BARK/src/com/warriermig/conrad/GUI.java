@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.scene.effect.DropShadow;
 import javafx.animation.*;
 import javafx.util.Duration;
+import javafx.scene.input.MouseEvent;
 
 public class GUI extends Application {
 	private Pane root;
@@ -32,7 +33,18 @@ public class GUI extends Application {
 		startButton.setLayoutX((windowWidth-startButton.prefWidth(-1))/2);
 		startButton.setLayoutY((windowHeight-startButton.prefHeight(-1))/2+50);
 	}
+	// private void installEventHandler(final Node keyNode) {
+	// 	// handler for enter key press / release events, other keys are
+	// 	// handled by the parent (keyboard) node handler
+	// 	final EventHandler<MouseEvent> keyEventHandler =
+	// 	new EventHandler<MouseEvent>() {
+	// 		public void handle(final MouseEvent e) {
+				
+	// 		}
+	// 	};
 
+	// 	startButton.onMousePressed
+	// }
 	public void styleButton(){
 		dropShadow = new DropShadow();
 		dropShadow.setRadius(15.0);
@@ -52,12 +64,24 @@ public class GUI extends Application {
 		startButton = new Button();
 		startButton.setId("button");
 		styleButton();
-		startButton.setOnAction(e -> {
-			TranslateTransition tt = new TranslateTransition(Duration.millis(500));
-			tt.setFromY(3.0);
-			tt.setToY(0.0f);
-			ParallelTransition pt = new ParallelTransition(dropShadow, tt);
-			tt.play();
+		final Animation anim = new Transition(){
+			{setCycleDuration(Duration.millis(100));}
+			protected void interpolate (double frac){
+				final int dist = 3;
+				final int radius = 15;
+				dropShadow.setOffsetY(frac*dist);
+				dropShadow.setRadius(frac*radius);
+				// startButton.setStyle("-fx-background-color: "+Color.color(1-frac, 1-frac, 1-frac).toString()+";");
+				// startButton.setEffect(dropShadow);
+			}
+		};
+		startButton.setOnMousePressed(e -> {
+			dropShadow.setOffsetY(0.0);
+			dropShadow.setRadius(0.0);
+			// startButton.setStyle("-fx-background-color: #CCCCCC;");
+		});
+		startButton.setOnMouseReleased(e -> {
+			anim.play();
 		});
 		
 		title = new Label("Hello!");
