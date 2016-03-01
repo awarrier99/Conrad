@@ -2739,7 +2739,7 @@ infrastructure
 exclusive
 seat
 concerns
-color
+colour
 vendor
 originally
 intel
@@ -3160,7 +3160,7 @@ indicate
 blonde
 ab
 proceedings
-favorite
+favourite
 transmission
 anderson
 utc
@@ -3523,7 +3523,7 @@ lg
 swiss
 sarah
 clark
-labor
+labour
 hate
 terminal
 publishers
@@ -3721,7 +3721,7 @@ writers
 marks
 flexible
 loved
-favorites
+favourites
 mapping
 numerous
 relatively
@@ -4756,7 +4756,7 @@ venue
 athletic
 thermal
 essays
-behavior
+behaviour
 vital
 telling
 fairly
@@ -6187,7 +6187,7 @@ florence
 invest
 honey
 um
-analyzes
+analyses
 drawings
 significance
 scenario
@@ -6855,7 +6855,7 @@ martial
 males
 victorian
 retain
-colors
+colours
 execute
 tunnel
 genres
@@ -7463,7 +7463,7 @@ medal
 paperbacks
 coaches
 vessels
-harbor
+harbour
 walks
 sucks
 sol
@@ -8646,7 +8646,7 @@ sewing
 consistency
 collectors
 conclude
-recognized
+recognised
 munich
 oman
 celebs
@@ -8900,7 +8900,7 @@ firewire
 mods
 nextel
 framing
-organized
+organised
 musician
 blocking
 rwanda
@@ -9220,7 +9220,7 @@ peas
 dosage
 receivers
 urls
-customize
+customise
 disposition
 variance
 navigator
@@ -9805,7 +9805,7 @@ lu
 wagon
 barbie
 dat
-favor
+favour
 soa
 knock
 urge
