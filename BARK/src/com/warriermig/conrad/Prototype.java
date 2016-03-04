@@ -1,26 +1,28 @@
 package com.warriermig.conrad;
 
+import javax.swing.JOptionPane;
 
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
 
+
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
-public class Prototype {       
-                                     
-    public static void main(String[] args) throws Exception {
-        Configuration configuration = new Configuration();
-
-        configuration.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
-        configuration.setDictionaryPath("resource:/edu/cmu/sphinx/models/en-us/cmudict-en-us.dict");
-        configuration.setLanguageModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us.lm.bin");
-        
-        String buf = new String("");
-        Scanner fin = new Scanner(new File("res\\engdict.txt"));
+public class Prototype implements Runnable {       
+	public void run() {
+		String buf = new String("");
+        Scanner fin = null;
+		try {
+			fin = new Scanner(new File("res\\engdictedit.txt"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
         ArrayList<String> words = new ArrayList<String>();
         String[] keywords = {"", "", "", ""};
         
@@ -35,9 +37,27 @@ public class Prototype {
         	keywords[x] = words.get(random.nextInt(words.size()));
         }
         
+        String keys = "";
         for (String s: keywords) {
-        	System.out.println(s);
+        	keys += s + ' ';
         }
-        
+        JOptionPane.showMessageDialog(null, "Say the following words: " + keys);
+	}
+	
+    public static void main(String[] args) throws IOException {
+    	Configuration configuration = new Configuration();
+
+        configuration.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
+        configuration.setDictionaryPath("res\\2986.dic");
+        configuration.setLanguageModelPath("res\\2986.lm");
+
+        LiveSpeechRecognizer recognizer = new LiveSpeechRecognizer(configuration);
+        recognizer.startRecognition(true);
+        SpeechResult result;
+        (new Thread(new Prototype())).start();
+        while ((result = recognizer.getResult()) != null) {
+            JOptionPane.showMessageDialog(null, "You said: " + result.getHypothesis());
+        }
+        recognizer.stopRecognition();
     }
 }
