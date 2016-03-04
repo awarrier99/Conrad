@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="edu/cmu/sphinx/decoder/search/" kind="src" path="lib/sphinx4-5prealpha-src/sphinx4-core/src/main/java"/>
+	<classpathentry kind="src" path="lib/sphinx4-5prealpha-src/sphinx4-core/src/main/java/edu/cmu/sphinx/decoder/search"/>
+	<classpathentry kind="src" path="lib/sphinx4-5prealpha-src/sphinx4-core/src/test/java"/>
+	<classpathentry kind="src" path="lib/sphinx4-5prealpha-src/sphinx4-samples/src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin1"/>
+</classpath>
